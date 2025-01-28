@@ -16,7 +16,7 @@ datasource db {
 
 model User{
   id Int @id @default(autoincrement())
-  email String? @unique
+  email String @unique
   name String?
   number String @unique
   password String
@@ -24,7 +24,7 @@ model User{
 
 model Balance{
   id Int @id @default(autoincrement())
-  userid String
+  userid String @unique
   amount BigInt 
   totalTransation BigInt
 }

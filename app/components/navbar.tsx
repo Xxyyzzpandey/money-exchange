@@ -26,6 +26,7 @@
 
 
 import React, { useState } from "react";
+import Link from "next/link";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false); // State for mobile menu visibility
@@ -72,15 +73,16 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-10">
-            {["Home", "Features", "About", "Contact"].map((item) => (
-              <a
-                key={item}
-                href="#"
+            
+          {[{id:1,label:"Home",href:"/login"}, {id:2,label:"Features",href:"/"}, {id:3,label:"About",href:"/login"}, {id:4,label:"Contact",href:"/login"}].map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
                 className="relative group"
               >
-                <span className="text-blue-100 group-hover:text-white transition-colors duration-300">{item}</span>
+                <span className="text-blue-100 group-hover:text-white transition-colors duration-300">{item.label}</span>
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 group-hover:w-full transition-all duration-300"></div>
-              </a>
+                </Link>
             ))}
           </div>
 
@@ -112,14 +114,14 @@ const Navbar = () => {
         {isOpen && (
           <div className="relative mt-4 md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-blue-900/50 backdrop-blur-sm rounded-lg border border-blue-500/10">
-              {["Home", "Features", "About", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href="#"
+            {[{id:1,label:"Home",href:"/login"}, {id:2,label:"Features",href:"/"}, {id:3,label:"About",href:"/login"}, {id:4,label:"Contact",href:"/login"}].map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
                   className="block px-3 py-2 rounded-md text-base font-medium text-blue-100 hover:text-white hover:bg-blue-800/50 transition-all duration-200"
                 >
-                  {item}
-                </a>
+                  {item.label}
+                  </Link>
               ))}
             </div>
           </div>

@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation'
 import Loading from "./loading"
 import { signIn } from "next-auth/react";
 import Head from "next/head";
-
+import Link from 'next/link';
+import Navbar from "./navbar";
 
 
 const Signin = () => {
@@ -49,6 +50,7 @@ const Signin = () => {
 
 
   return (<>
+    <Navbar/>
     <Head>
     <title>Sign In</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -100,14 +102,14 @@ const Signin = () => {
           <div className="flex flex-col mt-4 items-center justify-center text-sm">
             <h3>
               <span className="dark:text-gray-300">Don't have an account?</span>
-              <a
+              <Link
                 className="group text-blue-400 ml-1 transition-all duration-100 ease-in-out"
-                href="#"
+                href="/pages/signupage"
               >
                 <span className="bg-left-bottom bg-gradient-to-r from-blue-300 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
                   sign up
                 </span>
-              </a>
+              </Link>
             </h3>
           </div>
         </div>

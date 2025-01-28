@@ -1,6 +1,6 @@
+import { useState } from "react"
 
 export  function BalanceCard(){
-
     return<>
     <div className="flex flex-wrap justify-center mt-10">
 
@@ -18,7 +18,7 @@ export  function BalanceCard(){
         </div>
         <div className="flex flex-col justify-between flex-grow">
             <p className="leading-relaxed text-base text-white dark:text-gray-300">
-                <BalanceDisplayCard/>
+                <BalanceDisplayCard amount={0}/>
                 Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.
             </p>
             <a href="#" className="mt-3 text-black dark:text-white hover:text-blue-600 inline-flex items-center">Learn More
@@ -34,7 +34,7 @@ export  function BalanceCard(){
     </>
 }
 
-export  function BalanceDisplayCard(){
+export  function BalanceDisplayCard({amount}:any){
     return<>
     
     <div className="max-w-md mx-auto rounded-lg shadow-lg mt-5 dark:bg-gray-700 dark:shadow-blue-100">
@@ -44,7 +44,7 @@ export  function BalanceDisplayCard(){
       <div className="border-2 border-blue-500 mb-3 text"></div>
     </div>
     <div className="text-gray-500 dark:text-gray-200">
-      <p className="text-lg font-bold"> &#8377; 4455 </p>
+      <p className="text-lg font-bold"> &#8377; {amount} </p>
       
     </div>
   </div>
