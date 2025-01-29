@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react";
-import PaymentCard from "./paymentCard"
-import {BalanceDisplayCard} from "./balance"
+import Navbar from "../../components/navbar";
+import HistoryCard from "@/app/components/historyCard";
 
-export default function Sidebar() {
+export default function Handler() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (<>
-    
+    <Navbar/>
     <div className="flex h-screen bg-gray-100">
       {/* Mobile Overlay */}
       {menuOpen && (
@@ -144,12 +144,8 @@ export default function Sidebar() {
           />
         </div>
         <div className="flex flex-col items-center justify-center  space-y-4 p-4">
-            <BalanceDisplayCard />
-            <PaymentCard />
-          {/* <h1 className="text-2xl font-bold">Welcome to my dashboard!</h1>
-          <p className="mt-2 text-gray-600">
-            This is an example dashboard using Tailwind CSS.
-          </p> */}
+            <h1 className="underline text-blue-600">Transaction History</h1>
+            <HistoryCard/>
         </div>
       </div>
     </div>

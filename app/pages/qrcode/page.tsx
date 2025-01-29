@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react";
-import PaymentCard from "./paymentCard"
-import {BalanceDisplayCard} from "./balance"
+import QR from "../../components/qrcode"
 
 export default function Sidebar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -144,12 +143,7 @@ export default function Sidebar() {
           />
         </div>
         <div className="flex flex-col items-center justify-center  space-y-4 p-4">
-            <BalanceDisplayCard />
-            <PaymentCard />
-          {/* <h1 className="text-2xl font-bold">Welcome to my dashboard!</h1>
-          <p className="mt-2 text-gray-600">
-            This is an example dashboard using Tailwind CSS.
-          </p> */}
+            <QR/>
         </div>
       </div>
     </div>
