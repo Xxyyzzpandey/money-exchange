@@ -26,13 +26,13 @@ const HeroSection = () => {
           {/* Button Wrap */}
           <div className="flex justify-center">
             <Link
-              href=""
+              href="/pages/signupage"
               className="mr-5 inline-block rounded-xl bg-black px-8 py-4 text-center font-semibold text-white [box-shadow:rgb(19,_83,_254)_6px_6px] md:mr-6"
             >
               signup
             </Link>
-            <a
-              href="#"
+            <Link
+              href="/pages/signinpage"
               className="flex max-w-full flex-row items-center justify-center rounded-xl border border-solid border-[#1353fe] px-6 py-3 font-semibold text-[#1353fe] [box-shadow:rgb(19,_83,_254)_6px_6px]"
             >
               <img
@@ -40,8 +40,8 @@ const HeroSection = () => {
                 alt=""
                 className="mr-2 inline-block w-6"
               />
-              <p className="text-black">explore</p>
-            </a>
+              <p className="text-black">SignIn</p>
+            </Link>
           </div>
         </div>
         {/* Image Div */}

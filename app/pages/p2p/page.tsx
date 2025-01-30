@@ -3,10 +3,10 @@
 import PaymentCard from "../../components/paymentCard"
 import {BalanceDisplayCard} from "../../components/balance"
 import {useState} from "react"
-import {prisma} from "../../database/db"
 import { useEffect } from "react"
 import axios from "axios"
-
+import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 export default function P2p(){
     
@@ -76,7 +76,87 @@ export default function P2p(){
 
           {/* Sidebar Content */}
           <nav className="flex-1 px-4 py-6 space-y-2">
-            <a
+            <Link
+              href="/"
+              className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+               <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 12l9-9 9 9M4 10v10h5v-6h6v6h5V10"
+                  />
+              </svg>
+              Home
+            </Link>
+            <Link
+              href="/pages/p2p"
+              className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 8h18M3 12h6m6 0h6M5 16h2m4 0h8M3 6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6z"
+                  />
+              </svg>
+               Pay
+            </Link>
+            <Link
+              href="/pages/transationhistory"
+              className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 12a9 9 0 1 1 3 6m-3-6h3m6 0v-6m0 6l3 3"
+                  />
+              </svg>
+              History
+            </Link>
+            <Link
+              href="/pages/qrcode"
+              className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-lg"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 mr-3"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 4h4v4H4V4zm12 0h4v4h-4V4zM4 16h4v4H4v-4zm12 12h4v-4h-4v4zM10 10h4v4h-4v-4zm6 6h4v4h-4v-4z"
+                  />
+              </svg>
+              QR 
+            </Link>
+            <Link
               href="#"
               className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-lg"
             >
@@ -88,54 +168,14 @@ export default function P2p(){
                 stroke="currentColor"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H9m4 8H5a2 2 0 01-2-2V6a2 2 0 012-2h8"
+                  />
               </svg>
-              Dashboard
-            </a>
-            <a
-              href="#"
-              className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 19l-7-7 7-7m5 14l7-7-7-7"
-                />
-              </svg>
-              Login
-            </a>
-            <a
-              href="#"
-              className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M11.048 2.927c.3-1.222 2.074-1.222 2.374 0l.451 1.838a1 1 0 00.95.69h1.862c1.256 0 1.769 1.602.747 2.347l-1.51 1.09a1 1 0 00-.364 1.118l.452 1.838c.3 1.222-1.019 2.207-2.025 1.466l-1.51-1.09a1 1 0 00-1.175 0l-1.51 1.09c-1.006.74-2.324-.244-2.025-1.466l.451-1.838a1 1 0 00-.364-1.118L2.22 7.802c-1.022-.745-.509-2.347.747-2.347h1.862a1 1 0 00.95-.69l.451-1.838z"
-                />
-              </svg>
-              Favorites
-            </a>
+             <button onClick={()=>{signOut()}}>SignOut</button>  
+            </Link>
           </nav>
         </div>
       </div>

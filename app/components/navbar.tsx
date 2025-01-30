@@ -114,7 +114,7 @@ const Navbar = () => {
         {isOpen && (
           <div className="relative mt-4 md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-blue-900/50 backdrop-blur-sm rounded-lg border border-blue-500/10">
-            {[{id:1,label:"Home",href:"/login"}, {id:2,label:"Features",href:"/"}, {id:3,label:"About",href:"/login"}, {id:4,label:"Contact",href:"/login"}].map((item) => (
+            {[{id:1,label:"Home",href:"/login"}, {id:2,label:"Features",href:"/"}, {id:3,label:"About",href:"/login"}, {id:4,label:"Contact",href:"/login"},{id:5,label:"Pay",href:"/pages/p2p"}].map((item) => (
               <Link
                 key={item.id}
                 href={item.href}

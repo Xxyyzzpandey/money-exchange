@@ -6,7 +6,6 @@ import axios from "axios";
 import { useRouter } from 'next/navigation'
 import Loading from "./loading"
 import Head from "next/head";
-import { signIn } from "next-auth/react";
 import Link from 'next/link';
 import Navbar from "./navbar";
 
