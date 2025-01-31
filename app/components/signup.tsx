@@ -35,7 +35,7 @@ const Signup = () => {
       if (response.status === 201) {
         console.log("User created successfully");
         setloading(false)
-        router.push("/login"); // Redirect to login
+        router.push("/pages/signinpage"); // Redirect to login
       }
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {

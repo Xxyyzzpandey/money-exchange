@@ -33,7 +33,13 @@ export  async function Handle(req: NextRequest) {
         password: hashpassword,
       },
     });
-
+    const balanceuser=await prisma.balance.create({
+      data:{
+        userid:number,
+        amount:0,
+        totalTransation:2000
+      }
+    })
     return NextResponse.json({
       message: "User created successfully!",
       user: { id: newUser.id, name: newUser.name, email: newUser.email },

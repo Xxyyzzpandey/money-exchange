@@ -24,7 +24,6 @@ export const authOptions:NextAuthOptions={
                          }
                  
                          try {
-                           // Find the user by email or phone number
                            const user = await prisma.user.findFirst({
                              where: {
                                email: credentials.email 

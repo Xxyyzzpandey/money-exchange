@@ -22,8 +22,6 @@ export default function TransationHistory(){
         if (response.status===401) {
           throw new Error("all field are required");
         }
-
-        ;
         if(!response){
           setempty(false);
         }
