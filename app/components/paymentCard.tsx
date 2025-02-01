@@ -8,29 +8,25 @@ import { useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Spinner from './loadingspinner';
+import { Success } from "./alertcard";
 
 const PaymentCard = ({}) => {
 
-  const [amount,setAmount]=useState(0);
+  const [amount,setAmount]=useState("0");
   const [number,setNumber]=useState("");
   const [loading,setloading]=useState(false)
-  const [transation,settransation]=useState(false);
  
   const [isModalOpen, setIsModalOpen] = useState(false);
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
-    const handleConfirm = () => {
-      alert("User deleted!"); // Replace with your actual logic
-      closeModal();
-    };
 
     const { data: session }=useSession();
 
    const HandleTransation=async()=>{
           setloading(true)
           try{
-            const senderid=session.user.number;
-            const response=await axios.post("http://localhost:4000/hdfcWebhook",{amount,receiverid:number,senderid})
+            const senderid=session?.user.number;
+            const response=await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}`,{amount,receiverid:number,senderid})
             if(response.status===401){
               alert("Receiver does not exist")
               return
@@ -40,6 +36,7 @@ const PaymentCard = ({}) => {
               return
             }
             if(response.status===201){
+              alert("Transation Successful")
               return
             }
           }catch(error){
@@ -59,7 +56,6 @@ const PaymentCard = ({}) => {
  
   return (
     <div className="containermx-auto max-w-xl p-6">
-    
     <div className="bg-gray-100  p-6 rounded-lg shadow-lg">
 
         <h1 className="text-2xl font-semibold mb-4">Enter credentails to make payment</h1>

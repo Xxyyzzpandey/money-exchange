@@ -21,9 +21,7 @@ export default function P2p(){
         if (response.status===401) {
           throw new Error("Failed to fetch balance");
         }
-        console.log(response)
         const amount=response.headers.get("X-Balance")
-        console.log("response is ",response)
         setAmount(amount);
       } catch (error) {
         console.error("Error fetching balance:", error);

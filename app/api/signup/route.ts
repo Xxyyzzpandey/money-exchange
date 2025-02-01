@@ -8,6 +8,9 @@ export  async function Handle(req: NextRequest) {
   if (!name || !email || !password || !number) {
     return NextResponse.json({ message: "All fields are required" },{status:402});
   }
+  if(number.length != 10){
+    return NextResponse.json({msg:"invalid number"},{status:403});
+  }
  console.log(name,email,number,password);
   try {
     const existemail = await prisma.user.findUnique({

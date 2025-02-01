@@ -24,7 +24,7 @@ const HeroSection = () => {
             .
           </h1>
           <p className="mx-auto mb-5 max-w-[528px] text-xl text-[#636262] lg:mb-8">
-          <p className="text-blue-700">🎉 Get ₹2000 in Your PayTime Wallet on Signup! 🎉</p>  
+          🎉 Get ₹2000 in Your PayTime Wallet on Signup! 🎉  
           Sign up today and receive an instant ₹2000 welcome bonus in your PayTime wallet! 
           </p>
           {/* Button Wrap */}

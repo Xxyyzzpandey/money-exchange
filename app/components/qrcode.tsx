@@ -29,8 +29,8 @@ export default function QrcodeGeneration({qrcode}:any){
       <div className="bg-white p-6 rounded-2xl shadow-lg w-80 sm:w-96 flex flex-col items-center">
         <h2 className="text-xl font-semibold mb-4">Scan to Pay</h2>
         <div className="w-40 h-40 flex items-center justify-center border border-gray-300 rounded-lg overflow-hidden">
-          {/* Insert your QR code image here */}
-          <img src={qr} alt="QR Code" className="w-full h-full object-cover" />
+          
+          <img src={qr}  className="w-full h-full object-cover" />
         </div>
         <p className="mt-4 text-gray-600 text-sm">Scan the QR code to proceed.</p>
       </div>

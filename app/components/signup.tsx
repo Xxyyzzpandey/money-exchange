@@ -9,7 +9,6 @@ import Head from "next/head";
 import Link from 'next/link';
 import Navbar from "./navbar";
 
-
 const Signup = () => {
 
   const router=useRouter();
@@ -25,28 +24,28 @@ const Signup = () => {
     e.preventDefault();
      setloading(true);
     try {
-      const response = await axios.post("http://localhost:3000/api/signup", {
+      const response = await axios.post(`${process.env.LOCAL_URL}/api/signup`, {
         name,
         email,
         number,
         password,
       });
-       
       if (response.status === 201) {
-        console.log("User created successfully");
         setloading(false)
         router.push("/pages/signinpage"); // Redirect to login
       }
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response) {
         const status = error.response.status;
-  
+        if(status===403){
+          alert("invalid number formate")
+        }
         if (status === 400 || status === 402) {
           console.log("All fields are required");
         } else if (status === 401 || status === 409) {
-          console.log("User already exists with these credentials");
+          alert("User already exists with these credentials");
         } else {
-          console.log("Something went wrong");
+          alert("Something went wrong");
         }
       } else {
         console.error("Unexpected error:", error.message);
