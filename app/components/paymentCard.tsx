@@ -8,7 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Spinner from './loadingspinner';
-import { Success } from "./alertcard";
+
 
 const PaymentCard = ({}) => {
 
