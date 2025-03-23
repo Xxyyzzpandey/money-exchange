@@ -1,34 +1,44 @@
-// File: /pages/api/transactions.ts
-
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../database/db"; 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/options";
 
-export  async function Handler(req:NextRequest, res:NextResponse) {
-    const sesssion=await getServerSession(authOptions)
-    console.log("number is",sesssion)
+export async function POST(req: NextRequest) {
   try {
-    if(!sesssion){
-        return NextResponse.json({msg:"all field are requird"},{status:401})
+    const session = await getServerSession(authOptions);
+
+    if (!session || !session.user?.number) {
+      return new NextResponse(JSON.stringify({ msg: "Unauthorized: Session required" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     const transactions = await prisma.transation.findMany({
       where: {
         OR: [
-          { senderid: sesssion.user.number },
-          { recieverid: sesssion.user.number },
+          { senderid: session.user.number },
+          { recieverid: session.user.number },
         ],
       },
     });
-    console.log(transactions)
+
+    // Convert BigInt to string
     const formattedTransactions = transactions.map((t) => ({
-        ...t,
-        amount: t.amount.toString(), // Convert BigInt to string
-      }));
-   return NextResponse.json({transactions:formattedTransactions},{status:200});
+      ...t,
+      amount: t.amount.toString(),
+    }));
+
+    return new NextResponse(JSON.stringify({ transactions: formattedTransactions }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+
   } catch (error) {
-     return NextResponse.json({ error: "Failed to fetch transactions" },{status:500});
+    console.error("Error fetching transactions:", error);
+    return new NextResponse(JSON.stringify({ error: "Failed to fetch transactions" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
-export {Handler as POST}
