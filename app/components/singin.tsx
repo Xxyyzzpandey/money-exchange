@@ -28,6 +28,7 @@ const Signin = () => {
         });
          console.log(response)
         if (response?.ok) {
+          alert("login Successfully")
           router.push("/"); // Redirect to homepage or desired route
         } else {
           // console.error("Sign-in failed:", response?.error);
