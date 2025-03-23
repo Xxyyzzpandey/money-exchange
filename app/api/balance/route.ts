@@ -3,7 +3,7 @@ import { authOptions } from "../auth/[...nextauth]/options";
 import { prisma } from "../../database/db";
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function GET(req:NextRequest, res:NextResponse) {
+export async function GET(req:NextRequest, res:NextResponse) {
   const session = await getServerSession(authOptions); 
   console.log("session " ,session)
   if (!session) {
@@ -26,5 +26,4 @@ export default async function GET(req:NextRequest, res:NextResponse) {
     return NextResponse.json({ error: "Unable to fetch balance" },{status:500}); // Send an error status with message
   }
 }
-
 
