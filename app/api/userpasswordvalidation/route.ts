@@ -1,32 +1,48 @@
-import { NextRequest,NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/database/db";
 import bcrypt from "bcrypt";
 
-export  async function Handle(req: NextRequest,res:NextResponse) {
-  const { email, password } = await req.json();
-    console.log(email,password)
-  if (!email || !password ) {
-    return NextResponse.json({ message: "All fields are required" },{status:402});
-  }
- console.log(email,password);
+export async function POST(req: NextRequest) {
   try {
-    const user=await prisma.user.findUnique({
-        where:{
-            email:email
-        }
-    })
-    const isPasswordValid = await bcrypt.compare(password,user.password);
-      if (!isPasswordValid) {
-        return NextResponse.json({ message: "Invalid password." },{status:401});
-      }
+    const { email, password } = await req.json();
 
-    return NextResponse.json({
-      message: "user verified!",
-    },{status:201});
+    if (!email || !password) {
+      return new NextResponse(JSON.stringify({ message: "All fields are required" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { email: email },
+    });
+
+    if (!user || !user.password) {
+      return new NextResponse(JSON.stringify({ message: "User not found" }), {
+        status: 404,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return new NextResponse(JSON.stringify({ message: "Invalid password" }), {
+        status: 401,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    return new NextResponse(JSON.stringify({ message: "User verified!" }), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+
   } catch (error) {
-    return NextResponse
-      .json({ message: "Something went wrong", error: error },{status:501});
+    console.error("Error:", error);
+    return new NextResponse(JSON.stringify({ message: "Something went wrong" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
-
-export { Handle as POST }
