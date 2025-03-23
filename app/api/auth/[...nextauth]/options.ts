@@ -1,5 +1,4 @@
 import { NextAuthOptions } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt"
 import { prisma } from "../../../database/db"; 
