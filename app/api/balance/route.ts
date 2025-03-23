@@ -3,7 +3,7 @@ import { authOptions } from "../auth/[...nextauth]/options";
 import { prisma } from "../../database/db";
 import { NextRequest, NextResponse } from "next/server";
 
-async function handler(req:NextRequest, res:NextResponse) {
+export default async function GET(req:NextRequest, res:NextResponse) {
   const session = await getServerSession(authOptions); 
   console.log("session " ,session)
   if (!session) {
@@ -27,4 +27,4 @@ async function handler(req:NextRequest, res:NextResponse) {
   }
 }
 
-export { handler as GET };
+
