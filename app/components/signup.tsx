@@ -41,7 +41,7 @@ const Signup = () => {
           alert("invalid number formate")
         }
         if (status === 400 || status === 402) {
-          console.log("All fields are required");
+          alert("All fields are required");
         } else if (status === 401 || status === 409) {
           alert("User already exists with these credentials");
         } else {

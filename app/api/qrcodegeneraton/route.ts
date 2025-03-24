@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const pageUrl = "http://localhost:3000/pages/p2p";
+    const pageUrl = "https:paytime.pandeg.xyz/pages/p2p";
     const qrCodeData = await QRCode.toDataURL(pageUrl); // Generate QR Code
 
     return new NextResponse(JSON.stringify({ qrcode: qrCodeData }), {

@@ -10,7 +10,7 @@ export default function QrcodeGeneration({qrcode}:any){
      useEffect(()=>{
         async function fetchqr(){
             const qrdata=await axios.get("/api/qrcodegeneraton");
-            console.log("qrresponse is ",qrdata)
+            //console.log("qrresponse is ",qrdata)
             if(qrdata.status===200){
                 setqr(qrdata.data.qrcode);
                 return

@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ msg: "Invalid number" }, { status: 400 });
     }
 
-    console.log(name, email, number, password);
+    //console.log(name, email, number, password);
 
     const existEmail = await prisma.user.findUnique({ where: { email } });
     const existNumber = await prisma.user.findUnique({ where: { number } });
@@ -40,8 +40,8 @@ export async function POST(req: NextRequest) {
     await prisma.balance.create({
       data: {
         userid: number,
-        amount: 0,
-        totalTransation: 2000, // Ensure spelling matches your DB schema
+        amount: 2000,
+        totalTransation:0, // Ensure spelling matches your DB schema
       },
     });
 

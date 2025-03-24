@@ -26,7 +26,7 @@ const Signin = () => {
           password,
           redirect: false, // Prevent automatic redirection
         });
-         console.log(response)
+         //console.log(response)
         if (response?.ok) {
           alert("login Successfully")
           router.push("/"); // Redirect to homepage or desired route

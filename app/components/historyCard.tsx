@@ -15,7 +15,7 @@ export default function TransationHistory(){
     async function fetchTransactionHistory() {
       try {
         const number = session?.user.number;
-        console.log(number)
+       
         // Call an API route to fetch transaction history
         const response = await axios.post("/api/transitionhistory",{number});
 

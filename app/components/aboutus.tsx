@@ -18,9 +18,10 @@ export default function Aboutus(){
             <h2 className="my-4 font-bold text-3xl  sm:text-4xl ">About <span className="text-indigo-600">Our Company</span>
             </h2>
             <p className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi
-                doloremque, fugiat illum magni minus nisi nulla numquam obcaecati placeat quia, repellat tempore
-                voluptatum.
+            Welcome to PayTime Wallet, your secure and seamless digital payment solution. Designed for fast, hassle-free
+             transactions, PayTime allows you to send, receive, and manage money effortlessly. 
+             With robust security, instant transactions, and easy accessibility, PayTime Wallet empowers you to stay in control of your
+            finances anytime, anywhere. Join us and experience the future of digital payments! 🚀💸
             </p>
         </div>
     </div>
