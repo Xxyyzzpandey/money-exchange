@@ -24,7 +24,7 @@ const Signup = () => {
     e.preventDefault();
      setloading(true);
     try {
-      const response = await axios.post(`${process.env.LOCAL_URL}/api/signup`, {
+      const response = await axios.post("/api/signup", {
         name,
         email,
         number,
